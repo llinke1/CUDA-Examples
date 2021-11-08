@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31727.386
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddingMatrices", "AddingMatrices\AddingMatrices.vcxproj", "{E2C7ACFA-D6CB-4BE3-B7E2-FDC16654A618}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AddingMatrices_CPU", "AddingMatrices_CPU\AddingMatrices_CPU.vcxproj", "{08F1F0D6-D406-43A5-946F-3AFD2313100F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiplyingMatrices", "MultiplyingMatrices\MultiplyingMatrices.vcxproj", "{3EE3501C-03D5-4436-8D49-FD79EB5DD68E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2C7ACFA-D6CB-4BE3-B7E2-FDC16654A618}.Debug|x64.ActiveCfg = Debug|x64
+		{E2C7ACFA-D6CB-4BE3-B7E2-FDC16654A618}.Debug|x64.Build.0 = Debug|x64
+		{E2C7ACFA-D6CB-4BE3-B7E2-FDC16654A618}.Debug|x86.ActiveCfg = Debug|x64
+		{E2C7ACFA-D6CB-4BE3-B7E2-FDC16654A618}.Release|x64.ActiveCfg = Release|x64
+		{E2C7ACFA-D6CB-4BE3-B7E2-FDC16654A618}.Release|x64.Build.0 = Release|x64
+		{E2C7ACFA-D6CB-4BE3-B7E2-FDC16654A618}.Release|x86.ActiveCfg = Release|x64
+		{08F1F0D6-D406-43A5-946F-3AFD2313100F}.Debug|x64.ActiveCfg = Debug|x64
+		{08F1F0D6-D406-43A5-946F-3AFD2313100F}.Debug|x64.Build.0 = Debug|x64
+		{08F1F0D6-D406-43A5-946F-3AFD2313100F}.Debug|x86.ActiveCfg = Debug|Win32
+		{08F1F0D6-D406-43A5-946F-3AFD2313100F}.Debug|x86.Build.0 = Debug|Win32
+		{08F1F0D6-D406-43A5-946F-3AFD2313100F}.Release|x64.ActiveCfg = Release|x64
+		{08F1F0D6-D406-43A5-946F-3AFD2313100F}.Release|x64.Build.0 = Release|x64
+		{08F1F0D6-D406-43A5-946F-3AFD2313100F}.Release|x86.ActiveCfg = Release|Win32
+		{08F1F0D6-D406-43A5-946F-3AFD2313100F}.Release|x86.Build.0 = Release|Win32
+		{3EE3501C-03D5-4436-8D49-FD79EB5DD68E}.Debug|x64.ActiveCfg = Debug|x64
+		{3EE3501C-03D5-4436-8D49-FD79EB5DD68E}.Debug|x64.Build.0 = Debug|x64
+		{3EE3501C-03D5-4436-8D49-FD79EB5DD68E}.Debug|x86.ActiveCfg = Debug|x64
+		{3EE3501C-03D5-4436-8D49-FD79EB5DD68E}.Release|x64.ActiveCfg = Release|x64
+		{3EE3501C-03D5-4436-8D49-FD79EB5DD68E}.Release|x64.Build.0 = Release|x64
+		{3EE3501C-03D5-4436-8D49-FD79EB5DD68E}.Release|x86.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC1589B1-0CAC-43CA-8178-9436D5FC1241}
+	EndGlobalSection
+EndGlobal
