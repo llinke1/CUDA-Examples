@@ -33,6 +33,8 @@ DEPS = $(OBJS:%.o=%.d)
 
 # First make target, will be compiled, if "make" is called without arguments
 all:	$(EXECS_CU)
+	mkdir -p ../bin/
+	mv *.x ../bin/
 	@echo Successfully compiled whole project
 
 # Linking of all object Files to create the execs
