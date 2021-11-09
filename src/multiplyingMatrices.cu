@@ -6,6 +6,7 @@
 
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
+#include "cuda_helpers.cuh"
 #include <chrono> // For time measurement
 
 #include <iostream>
@@ -25,10 +26,9 @@ __global__ void multiplyGPU(int *c, const int *a, const int* b, const int N)
 {
   //Row and Col of Result matrix calculated in this thread
   int row = threadIdx.y + blockIdx.y * blockDim.y;
-  int col=threadIdx.x + blockIdx.x * blockDim.x;
+  int col = threadIdx.x + blockIdx.x * blockDim.x;
 
   int tmp=0; // Temporary result storage to avoid calling c too often
-    
   if(row<N && col<N)
   {
 	  for(int i=0; i<N; i++)
@@ -93,13 +93,17 @@ int main()
   cudaMemcpy(dev_a, a, arraySize * sizeof(int), cudaMemcpyHostToDevice);
   cudaMemcpy(dev_b, b, arraySize * sizeof(int), cudaMemcpyHostToDevice);
 
+  // Set Blocks and Threads (2 Dimensional!)
+  int max_threads_per_block_1dim=sqrt(MAX_THREADS_PER_BLOCK); // Maximal number of threads along one dimension
+  dim3 blocks(N/max_threads_per_block_1dim,N/max_threads_per_block_1dim); //Trick: 2-Dimensional Blocks!
+  dim3 threads(max_threads_per_block_1dim,max_threads_per_block_1dim); // Trick: N threads along dimension 1 of a block, and N threads along dimension 2 of a block
+
   // Do calculation
-  dim3 blocks(1,1); //Trick: 2-Dimensional Blocks!
-  dim3 threads(N,N); // Trick: N threads along dimension 1 of a block, and N threads along dimension 2 of a block
   multiplyGPU <<< blocks, threads >>> (dev_c, dev_a, dev_b, N); //Launch GPU Kernel, 1 thread per element of result matrix
 
   // Copy result from device to host
   cudaMemcpy(c, dev_c, arraySize * sizeof(int), cudaMemcpyDeviceToHost);
+
 
   // Clean up: Free space on device
   cudaFree(dev_a);

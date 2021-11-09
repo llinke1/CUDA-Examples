@@ -160,7 +160,7 @@ int main()
     // Stop time measurement
     auto stop = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_gpu = stop - start;
-    printf("Needed %f seconds for adding on GPU \n", elapsed_gpu.count());
+    printf("Needed %f seconds for calculating paircount of %d galaxies on GPU \n", elapsed_gpu.count(), arraySize);
 
 
     // CPU CALCULATIONS
@@ -172,7 +172,7 @@ int main()
     // Stop time measurement
     stop = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_cpu = stop - start;
-    printf("Needed %f seconds for adding on CPU \n", elapsed_cpu.count());
+    printf("Needed %f seconds for calculating paircount of %d galaxies on CPU \n", elapsed_cpu.count(), arraySize);
 
     return 0;
 }

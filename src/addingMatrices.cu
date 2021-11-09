@@ -1,5 +1,5 @@
 ﻿/***********************************************************************************/
-/* Example for using CUDA to add two large arrays **********************************/
+/* Example for using CUDA to add two large arrays (a+b=c) ***************************/
 /* Barebone example, does not include proper error handling for better readibility */
 /***********************************************************************************/
 
@@ -10,11 +10,11 @@
 
 #include <iostream> // In/Output
 
-#define MAX_THREADS_PER_BLOCK 1024 // maximal threads within one block
+#define MAX_THREADS_PER_BLOCK 1024 // maximal threads within one block (Might vary with GPU specs)
 
 
 /*
-Adds two arrays on GPU
+Adds two (equal length) arrays on GPU
 Kernel Function: Is evaluated by each thread
 __global__ means: Is executed on GPU and can be called from CPU
 @param c Result array
@@ -25,23 +25,22 @@ __global__ means: Is executed on GPU and can be called from CPU
 __global__ void addGPU(int *c, const int *a, const int* b, const int N)
 {  
     int i = threadIdx.x + blockIdx.x * blockDim.x; // Index of this thread
-    if(i<N)
+    if(i<N) // Make sure we are not outside of the arrays
       {
-
 	    c[i] = a[i] + b[i]; // Do summation
-
       }
 }
 
 /*
-Adds two arrays on CPU
+Adds two (equal lenght) arrays on CPU
 @param c Result array
 @param a Summand 1
 @param b Summand 2
+@param N number of elements in a, b, and c
 */
 void addCPU(int *c, const int* a, const int* b, int N)
 {
-  for(int i=0; i<N; i++)
+  for(int i=0; i<N; i++) // Go through whole arrays
     {
 	  c[i]=a[i] + b[i];
     };
@@ -58,7 +57,7 @@ int main()
     // Fill arrays
     for (int i = 0; i < arraySize; i++)
     {
-        a[i] = i;
+      a[i] = i;
 	    b[i] = 2 * i;
     };
     
@@ -72,7 +71,6 @@ int main()
     cudaMalloc((void**)&dev_a, arraySize * sizeof(int)); // Allocate memory for summand 1 array
     cudaMalloc((void**)&dev_b, arraySize * sizeof(int)); // Allocate memory for summand 2 array
     cudaMalloc((void**)&dev_c, arraySize * sizeof(int)); // Allocate memory for result array
-
 
     // Copy Summands to device
     cudaMemcpy(dev_a, a, arraySize * sizeof(int), cudaMemcpyHostToDevice);
